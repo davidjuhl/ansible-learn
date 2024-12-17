@@ -1,0 +1,14 @@
+---
+
+ - hosts: suse 
+   become: true
+   tasks:
+   - name: Install some packages(SuSE) to the latest version
+     zypper:
+            name: 
+              - gvim
+              - nmap
+              - spice-vdagent
+              - fail2ban
+              - mariadb-server
+            state: latest

@@ -1,0 +1,11 @@
+---
+
+ - hosts: all
+   become: true
+   tasks:
+   - name: Sync zsh plugins
+     synchronize:
+       src: /home/david/.oh-my-zsh/custom/plugins
+       dest: /home/david/.oh-my-zsh/custom
+       archive: yes
+       recursive: yes

@@ -1,0 +1,4 @@
+ansible 192.168.0.183 -m ansible.builtin.script -a "addpeer-xubunt-HD06.sh" -become
+ansible 192.168.0.195 -m ansible.builtin.script -a "wg0client-up.sh" -become
+
+Adding a peer: Verify who you are adding

@@ -1,0 +1,13 @@
+---
+
+ - hosts: all
+   become: true
+   tasks:
+   - name: Make sure fail2ban service is running
+     systemd:
+           state: started
+           name: fail2ban
+   - name: Make sure ufw service is running
+     systemd:
+           state: started
+           name: ufw
