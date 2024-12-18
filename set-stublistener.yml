@@ -1,0 +1,19 @@
+- name: Set up systemd-resolved for new hosts
+  hosts: systemd
+  become: yes
+  tasks:
+    - name: Create config directory
+      shell: mkdir /etc/systemd/resolved.conf.d
+
+    - name: Make sure systemd-resolved is stopped
+      ansible.builtin.systemd_service:
+        name: systemd-resolved.service
+        state: stopped
+
+    - name: Copy over a local config for systemd-resolved
+      template: src=resolved.conf.d/stub-listener.conf dest=/etc/systemd/resolved.conf.d/stub-listener.conf
+
+    - name: Make sure systemd-resolved is started
+      ansible.builtin.systemd_service:
+        name: systemd-resolved.service
+        state: started

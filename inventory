@@ -4,6 +4,7 @@ kali-HD05
 pi.hole
 debian-HD06	
 the-one	
+ubuntu-HD09
 
 [suse]
 suse-HD07	
@@ -11,3 +12,5 @@ suse-HD07
 [fedora]
 fedoraws-HD08
 
+[new]
+ubuntu-HD09
