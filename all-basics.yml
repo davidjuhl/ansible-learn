@@ -1,0 +1,55 @@
+---
+
+ - hosts: debian 
+   become: true
+   tasks:
+   - name: Install basic list of packages 
+     apt:
+       pkg:
+       - p7zip-full
+       - wireguard
+       - tmux
+       - zsh
+       - curl
+       - git
+       - links
+       - ufw
+       - vim
+       - fail2ban
+       - nmap
+       state: latest
+       update_cache: yes
+ - hosts: fedora
+   become: true
+   tasks:
+   - name: Install basic list of packages.
+     yum:
+       name:
+       - p7zip
+       - wireguard-tools
+       - tmux
+       - zsh
+       - curl
+       - git
+       - links
+       - ufw
+       - vim
+       - fail2ban
+       - nmap
+       state: latest
+ - hosts: suse
+   become: true
+   tasks:
+   - name: Install basic list of packages.
+     zypper:
+            name: 
+            - tmux
+            - zsh
+            - curl
+            - git
+            - links
+            - vim
+            - fail2ban
+            - nmap
+            - wireguard-tools
+            state: latest
