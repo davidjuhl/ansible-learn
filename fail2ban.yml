@@ -1,0 +1,19 @@
+---
+
+- name: Setup fail2ban
+  hosts: new
+  become: yes
+  tasks:
+
+     - name: Make sure fail2ban is stopped
+       ansible.builtin.systemd_service:
+         name: fail2ban.service
+         state: stopped
+
+     - name: Copy over a local config for fail2ban
+       template: src=jail.local dest=/etc/fail2ban/jail.local
+
+     - name: Make sure fail2ban is started
+       ansible.builtin.systemd_service:
+         name: fail2ban.service
+         state: started
