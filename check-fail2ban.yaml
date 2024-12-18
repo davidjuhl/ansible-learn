@@ -1,9 +1,9 @@
 ---
 
- - hosts: all
+ - hosts: debian
    become: true
    tasks:
-   - name: Make sure fail2ban service is running
+   - name: Make sure fail2ban and ufw service are running
      systemd:
            state: started
            name: fail2ban
@@ -11,3 +11,14 @@
      systemd:
            state: started
            name: ufw
+ - hosts: fedora suse
+   become: true
+   tasks:
+   - name: Make sure fail2ban and firewalld service are running
+     systemd:
+           state: started
+           name: fail2ban
+   - name: Make sure firewalld service is running
+     systemd:
+           state: started
+           name: firewalld
