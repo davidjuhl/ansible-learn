@@ -1,9 +1,0 @@
----
-
- - hosts: suse 
-   become: true
-   tasks:
-     - name: Update all packages(SuSE) to the latest version
-       zypper:
-         name: '*'
-         state: latest

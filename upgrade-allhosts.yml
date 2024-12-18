@@ -1,0 +1,24 @@
+---
+
+ - hosts: debian 
+   become: true
+   tasks:
+   - name: Update all packages to the latest version
+     apt:
+       upgrade: dist
+ - hosts: suse 
+   become: true
+   tasks:
+     - name: Update all packages(SuSE) to the latest version
+       zypper:
+         name: '*'
+         state: latest
+ - hosts: fedora
+   become: true
+   tasks:
+   - name: Upgrade all packages to the latest versions
+     yum:
+       name: "*"
+       state: latest
+
+
